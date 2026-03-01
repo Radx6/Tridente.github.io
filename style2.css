@@ -33,3 +33,17 @@ body {
 #cennnik {
     color: yellow;
 }
+.powrot {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.powrot:hover {
+    background-color: #990000;
+}
