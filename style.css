@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(15, 15, 14);
+    background-image: url()
 }
 
 #header {
@@ -74,4 +74,5 @@ color: red;
     background-size: 40px 40px;
     filter: blur(4px);
 }
+
 
