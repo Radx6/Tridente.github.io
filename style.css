@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
 }
-
 body {
 background-color: rgb(15, 15, 14);
 }
@@ -25,9 +24,6 @@ background-color: rgb(15, 15, 14);
     padding: 0;
     width: 400px;
 }
-
-
-
 .menu li a {
     display: block;
     padding: 15px 20px;
@@ -38,41 +34,7 @@ background-color: rgb(15, 15, 14);
 .menu li a:hover {
     background-color: #ec1717;
 }
-footer {
-color: red;
-}
-.neon-grid {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    inset: 0;
-    z-index: -1;
-    background-color: black;
-    background-image:
-        linear-gradient(rgba(0, 255, 255, 0.2) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.2) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: moveGrid 5s linear infinite;
-}
 
-@keyframes moveGrid {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 40px 40px;
-    }
-}
-.neon-grid::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(0, 255, 255, 0.5) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.5) 2px, transparent 2px);
-    background-size: 40px 40px;
-    filter: blur(4px);
-}
 
 
 
