@@ -64,4 +64,14 @@ color: red;
         background-position: 40px 40px;
     }
 }
+.neon-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 255, 255, 0.5) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.5) 2px, transparent 2px);
+    background-size: 40px 40px;
+    filter: blur(4px);
+}
 
