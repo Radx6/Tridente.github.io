@@ -26,7 +26,8 @@ body {
     padding: 0;
     width: 400px;
 }
-
+
+
 
 .menu li a {
     display: block;
@@ -37,4 +38,7 @@ body {
 
 .menu li a:hover {
     background-color: #ec1717;
+}
+.main {
+color: white;
 }
