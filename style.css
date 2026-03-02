@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: black;
+background-color: rgb(15, 15, 14);
 }
 #header {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -73,6 +73,7 @@ color: red;
     background-size: 40px 40px;
     filter: blur(4px);
 }
+
 
 
 
