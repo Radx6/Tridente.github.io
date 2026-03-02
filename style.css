@@ -26,10 +26,7 @@ body {
     padding: 0;
     width: 400px;
 }
-
-.menu li {
-    position: relative;
-}
+
 
 .menu li a {
     display: block;
@@ -40,10 +37,4 @@ body {
 
 .menu li a:hover {
     background-color: #ec1717;
-}
-
-.zdjecia {
-    float: right;
-    height: 300px;
-    width: 300px;
 }
