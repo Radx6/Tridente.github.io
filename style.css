@@ -10,8 +10,8 @@ body {
 #header {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
-    height: 60px;
-    width: 100%;
+    height: auto;
+    width: auto;
     color: white;
     text-align: center;
 }
