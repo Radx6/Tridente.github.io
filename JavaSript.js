@@ -8,7 +8,6 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
         let ilosc = parseInt(input.value) || 0;
 
         if (ilosc > 0) {
-
             let nazwa = input.dataset.nazwa;
             let cena = parseFloat(input.dataset.cena);
             let wartosc = ilosc * cena;
@@ -23,7 +22,7 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
 
             tresc += nazwa + "\n";
             tresc += "Ilość: " + ilosc + "\n";
-            tresc += "Cena: " + cena + "$\n";
+            tresc += "Cena za sztukę: " + cena + "$\n";
             tresc += "Wartość: " + wartosc + "$\n\n";
         }
     });
@@ -36,18 +35,21 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
     tresc += "---------------------\n";
     tresc += "SUMA: " + suma + "$";
 
-const blob = new Blob([tresc], { type: "text/plain" });
-const link = document.createElement("a");
+    // zapis do localStorage
+    localStorage.setItem("koszyk", JSON.stringify(produkty));
 
-link.href = URL.createObjectURL(blob);
-link.download = "zamowienie.txt";
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
+    // generowanie pliku
+    const blob = new Blob([tresc], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "zamowienie.txt";
 
-// opóźnienie 1 sekunda
-setTimeout(() => {
-    window.location.href = "koszyk.html";
-}, 1000);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // opóźnienie 1 sekundy przed przejściem na koszyk.html
+    setTimeout(() => {
+        window.location.href = "koszyk.html";
+    }, 1000);
 });
-
