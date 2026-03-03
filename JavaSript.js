@@ -36,17 +36,18 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
     tresc += "---------------------\n";
     tresc += "SUMA: " + suma + "$";
 
-    // zapis do localStorage
-    localStorage.setItem("koszyk", JSON.stringify(produkty));
+const blob = new Blob([tresc], { type: "text/plain" });
+const link = document.createElement("a");
 
-    // generowanie pliku
-    const blob = new Blob([tresc], { type: "text/plain" });
-    const link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = "zamowienie.txt";
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
 
-    link.href = URL.createObjectURL(blob);
-    link.download = "zamowienie.txt";
-    link.click();
-
-    // przejście na koszyk
+// opóźnienie 1 sekunda
+setTimeout(() => {
     window.location.href = "koszyk.html";
+}, 1000);
 });
+
