@@ -1,4 +1,4 @@
-document.getElementById("przejdzDoKoszyka").addEventListener("click", function () {
+document.getElementById("zatwierdzKoszyk").addEventListener("click", function () {
 
     let produkty = [];
 
@@ -13,6 +13,11 @@ document.getElementById("przejdzDoKoszyka").addEventListener("click", function (
             });
         }
     });
+
+    if (produkty.length === 0) {
+        alert("Koszyk jest pusty.");
+        return;
+    }
 
     localStorage.setItem("koszyk", JSON.stringify(produkty));
     window.location.href = "koszyk.html";
