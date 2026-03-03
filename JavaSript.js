@@ -1,7 +1,6 @@
 document.getElementById("zatwierdzKoszyk").addEventListener("click", function () {
 
     let produkty = [];
-    let tresc = "ZAMÓWIENIE\n\n";
     let suma = 0;
 
     document.querySelectorAll(".ilosc").forEach(input => {
@@ -11,19 +10,9 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
             let nazwa = input.dataset.nazwa;
             let cena = parseFloat(input.dataset.cena);
             let wartosc = ilosc * cena;
-
             suma += wartosc;
 
-            produkty.push({
-                nazwa: nazwa,
-                cena: cena,
-                ilosc: ilosc
-            });
-
-            tresc += nazwa + "\n";
-            tresc += "Ilość: " + ilosc + "\n";
-            tresc += "Cena za sztukę: " + cena + "$\n";
-            tresc += "Wartość: " + wartosc + "$\n\n";
+            produkty.push({ nazwa, cena, ilosc });
         }
     });
 
@@ -32,24 +21,23 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
         return;
     }
 
+    // przygotowanie treści zamówienia
+    let tresc = "ZAMÓWIENIE\n\n";
+    produkty.forEach(p => {
+        tresc += `${p.nazwa}\nIlość: ${p.ilosc}\nCena za sztukę: ${p.cena}$\nWartość: ${p.cena * p.ilosc}$\n\n`;
+    });
     tresc += "---------------------\n";
     tresc += "SUMA: " + suma + "$";
 
-    // zapis do localStorage
-    localStorage.setItem("koszyk", JSON.stringify(produkty));
+    // wysyłka przez EmailJS
+    emailjs.send("TWÓJ_SERVICE_ID", "TWÓJ_TEMPLATE_ID", {
+        tresc_zamowienia: tresc
+    })
+    .then(function(response) {
+        alert("Zamówienie wysłane!");
+        window.location.href = "koszyk.html"; // przejście na koszyk
+    }, function(error) {
+        alert("Błąd wysyłki: " + JSON.stringify(error));
+    });
 
-    // generowanie pliku
-    const blob = new Blob([tresc], { type: "text/plain" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "zamowienie.txt";
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-
-    // opóźnienie 1 sekundy przed przejściem na koszyk.html
-    setTimeout(() => {
-        window.location.href = "koszyk.html";
-    }, 1000);
 });
