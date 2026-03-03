@@ -38,6 +38,10 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
         window.location.href = "koszyk.html"; // przejście na koszyk
     }, function(error) {
         alert("Błąd wysyłki: " + JSON.stringify(error));
+    emailjs.send("service_v83zb7j", "template_votmqwn", {
+    tresc_zamowienia: tresc
+})
     });
 
 });
+
