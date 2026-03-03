@@ -1,16 +1,30 @@
 document.getElementById("zatwierdzKoszyk").addEventListener("click", function () {
 
     let produkty = [];
+    let tresc = "ZAMÓWIENIE\n\n";
+    let suma = 0;
 
     document.querySelectorAll(".ilosc").forEach(input => {
         let ilosc = parseInt(input.value) || 0;
 
         if (ilosc > 0) {
+
+            let nazwa = input.dataset.nazwa;
+            let cena = parseFloat(input.dataset.cena);
+            let wartosc = ilosc * cena;
+
+            suma += wartosc;
+
             produkty.push({
-                nazwa: input.dataset.nazwa,
-                cena: parseFloat(input.dataset.cena),
+                nazwa: nazwa,
+                cena: cena,
                 ilosc: ilosc
             });
+
+            tresc += nazwa + "\n";
+            tresc += "Ilość: " + ilosc + "\n";
+            tresc += "Cena: " + cena + "$\n";
+            tresc += "Wartość: " + wartosc + "$\n\n";
         }
     });
 
@@ -19,6 +33,20 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
         return;
     }
 
+    tresc += "---------------------\n";
+    tresc += "SUMA: " + suma + "$";
+
+    // zapis do localStorage
     localStorage.setItem("koszyk", JSON.stringify(produkty));
+
+    // generowanie pliku
+    const blob = new Blob([tresc], { type: "text/plain" });
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+    link.download = "zamowienie.txt";
+    link.click();
+
+    // przejście na koszyk
     window.location.href = "koszyk.html";
 });
