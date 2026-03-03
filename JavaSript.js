@@ -29,17 +29,16 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
     tresc += "---------------------\n";
     tresc += "SUMA: " + suma + "$";
 
-    // wysyłka przez EmailJS
-    emailjs.send("service_v83zb7j", "template_votmqwn", {
-        tresc_zamowienia: tresc
-    })
     .then(function(response) {
         alert("Zamówienie wysłane!");
         window.location.href = "koszyk.html"; // przejście na koszyk
     }, function(error) {
         alert("Błąd wysyłki: " + JSON.stringify(error));
     });
-
+   emailjs.send("service_v83zb7j", "template_votmqwn", {
+        tresc_zamowienia: tresc
+    })
 });
+
 
 
