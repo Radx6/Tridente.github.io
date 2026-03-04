@@ -1,46 +1,63 @@
-document.getElementById("zatwierdzKoszyk").addEventListener("click", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    let produkty = [];
+    const koszykBody = document.getElementById("koszykBody");
+    const sumaElement = document.getElementById("suma");
+    const zatwierdzBtn = document.getElementById("zatwierdz");
+
+    let koszyk = JSON.parse(localStorage.getItem("koszyk")) || [];
     let suma = 0;
 
-    document.querySelectorAll(".ilosc").forEach(input => {
-        let ilosc = parseInt(input.value) || 0;
+    // wyświetlanie produktów w tabeli
+    koszyk.forEach(p => {
+        let wartosc = p.cena * p.ilosc;
+        suma += wartosc;
 
-        if (ilosc > 0) {
-            let nazwa = input.dataset.nazwa;
-            let cena = parseFloat(input.dataset.cena);
-            let wartosc = ilosc * cena;
-            suma += wartosc;
+        let wiersz = document.createElement("tr");
+        wiersz.innerHTML = `
+            <td>${p.nazwa}</td>
+            <td>${p.ilosc}</td>
+            <td>${p.cena}$</td>
+            <td>${wartosc}$</td>
+        `;
 
-            produkty.push({ nazwa, cena, ilosc });
-        }
+        koszykBody.appendChild(wiersz);
     });
 
-    if (produkty.length === 0) {
-        alert("Koszyk jest pusty.");
-        return;
-    }
+    sumaElement.textContent = "Suma: " + suma + "$";
 
-    // przygotowanie treści zamówienia
-let tresc = "ZAMÓWIENIE\n\n";
-produkty.forEach(p => {
-    tresc += p.nazwa + "\n";
-    tresc += "Ilość: " + p.ilosc + "\n";
-    tresc += "Cena za sztukę: " + p.cena + "$\n";
-    tresc += "Wartość: " + (p.cena * p.ilosc) + "$\n\n";
+
+    // kliknięcie zatwierdź
+    zatwierdzBtn.addEventListener("click", function () {
+
+        if (koszyk.length === 0) {
+            alert("Koszyk jest pusty.");
+            return;
+        }
+
+        let tresc = "ZAMÓWIENIE\n\n";
+
+        koszyk.forEach(p => {
+            tresc += p.nazwa + "\n";
+            tresc += "Ilość: " + p.ilosc + "\n";
+            tresc += "Cena za sztukę: " + p.cena + "$\n";
+            tresc += "Wartość: " + (p.cena * p.ilosc) + "$\n\n";
+        });
+
+        tresc += "---------------------\n";
+        tresc += "SUMA: " + suma + "$";
+
+        emailjs.send("service_v83zb7j", "template_votmqwn", {
+            tresc_zamowienia: tresc
+        })
+        .then(function () {
+            alert("Zamówienie wysłane!");
+            localStorage.removeItem("koszyk");
+            window.location.href = "cennik.html";
+        })
+        .catch(function (error) {
+            alert("Błąd wysyłki: " + JSON.stringify(error));
+        });
+
+    });
+
 });
-tresc += "---------------------\n";
-tresc += "SUMA: " + suma + "$";
-
-emailjs.send("service_v83zb7j", "template_votmqwn", {
-    tresc_zamowienia: tresc
-})
-.then(function(response) {
-    alert("Zamówienie wysłane!");
-    window.location.href = "koszyk.html";
-})
-.catch(function(error) {
-    alert("Błąd wysyłki: " + JSON.stringify(error));
-});
-
-
