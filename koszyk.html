@@ -38,37 +38,12 @@
 
 </main>
 
-<script>
-let koszyk = JSON.parse(localStorage.getItem("koszyk")) || [];
-let koszykBody = document.getElementById("koszykBody");
-let suma = 0;
 
-koszyk.forEach(produkt => {
-    let wartosc = produkt.ilosc * produkt.cena;
-    suma += wartosc;
-
-    koszykBody.innerHTML += `
-        <tr>
-            <td>${produkt.nazwa}</td>
-            <td>${produkt.ilosc}</td>
-            <td>${produkt.cena}$</td>
-            <td>${wartosc}$</td>
-        </tr>
-    `;
-});
-
-document.getElementById("suma").innerText = "Suma: " + suma + "$";
-
-document.getElementById("zatwierdz").addEventListener("click", function(){
-    alert("Zamówienie zostało przyjęte.");
-    localStorage.removeItem("koszyk");
-    window.location.href = "index.html";
-});
-</script>
 
 </body>
 
 </html>
+
 
 
 
