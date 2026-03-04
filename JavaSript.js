@@ -22,23 +22,25 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
     }
 
     // przygotowanie treści zamówienia
-    let tresc = "ZAMÓWIENIE\n\n";
-    produkty.forEach(p => {
-        tresc += `${p.nazwa}\nIlość: ${p.ilosc}\nCena za sztukę: ${p.cena}$\nWartość: ${p.cena * p.ilosc}$\n\n`;
-    });
-    tresc += "---------------------\n";
-    tresc += "SUMA: " + suma + "$";
-
-    .then(function(response) {
-        alert("Zamówienie wysłane!");
-        window.location.href = "koszyk.html"; // przejście na koszyk
-    }, function(error) {
-        alert("Błąd wysyłki: " + JSON.stringify(error));
-    });
-   emailjs.send("service_v83zb7j", "template_votmqwn", {
-        tresc_zamowienia: tresc
-    })
+let tresc = "ZAMÓWIENIE\n\n";
+produkty.forEach(p => {
+    tresc += p.nazwa + "\n";
+    tresc += "Ilość: " + p.ilosc + "\n";
+    tresc += "Cena za sztukę: " + p.cena + "$\n";
+    tresc += "Wartość: " + (p.cena * p.ilosc) + "$\n\n";
 });
+tresc += "---------------------\n";
+tresc += "SUMA: " + suma + "$";
 
+emailjs.send("service_v83zb7j", "template_votmqwn", {
+    tresc_zamowienia: tresc
+})
+.then(function(response) {
+    alert("Zamówienie wysłane!");
+    window.location.href = "koszyk.html";
+})
+.catch(function(error) {
+    alert("Błąd wysyłki: " + JSON.stringify(error));
+});
 
 
