@@ -4,18 +4,10 @@
 <meta charset="UTF-8">
 <title>Koszyk</title>
 <link rel="stylesheet" href="style2.css">
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script type="text/javascript">
-   (function(){
-       emailjs.init("knRF6UX9cNd8mqfLO"); // wstaw swój Public Key z EmailJS
-   })();
-</script>
 </head>
 <body>
-
 <main>
 <h1>Twój Koszyk</h1>
-
 <table border="1">
 <thead>
 <tr>
@@ -35,14 +27,21 @@
 </a>
 
 <button id="zatwierdz">Zatwierdź zamówienie</button>
-<script src="JavaSript.js"></script>
 </main>
 
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+(function(){
+    emailjs.init("knRF6UX9cNd8mqfLO");
+})();
+</script>
 
+<script src="koszyk.js"></script>
 
 </body>
 
 </html>
+
 
 
 
