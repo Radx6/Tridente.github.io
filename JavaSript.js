@@ -29,7 +29,7 @@ document.getElementById("zatwierdzKoszyk").addEventListener("click", function ()
     tresc += "---------------------\n";
     tresc += "SUMA: " + suma + "$";
 
-    .then(function(response) {
+    then(function(response) {
         alert("Zamówienie wysłane!");
         window.location.href = "koszyk.html"; // przejście na koszyk
     }, function(error) {
