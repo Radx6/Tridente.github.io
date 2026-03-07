@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background-image: url(2.png);
+    color: white;
+}
+
+header {
+    color: darkslategray;
+    text-align: center;
+    font-weight: bold;
+}
+header:hover {
+    color: darkgray;
+}
+a{
+    color: darkslategray;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+audio {
+    justify-self: center;
+}

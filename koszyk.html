@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Koszyk</title>
+</head>
+<body>
+
+<h1>Twój koszyk</h1>
+
+<div id="cartItems"></div>
+
+<h2>Suma: <span id="total">0$</span></h2>
+
+<script>
+
+const cart = JSON.parse(localStorage.getItem("cart")) || []
+
+const cartItems = document.getElementById("cartItems")
+const totalText = document.getElementById("total")
+
+let total = 0
+
+cart.forEach(item=>{
+
+let itemTotal = item.qty * item.price
+
+cartItems.innerHTML += `
+<p>
+${item.name} x${item.qty} = ${itemTotal}$
+</p>
+`
+
+total += itemTotal
+
+})
+
+totalText.innerText = total + "$"
+
+</script>
+<div class="player">
+
+<button onclick="toggleMusic()" id="playBtn">▶</button>
+
+<select id="songList">
+<option value="Kartky - Outside (prod. HVZX).mp3">Outside</option>
+<option value="piosenka2.mp3">Piosenka 2</option>
+<option value="piosenka3.mp3">Piosenka 3</option>
+</select>
+
+🔊 <input type="range" id="volumeSlider" min="0" max="1" step="0.01">
+
+</div>
+
+<audio id="muzyka" loop></audio>
+<script src="Muzyka.js"></script>
+</body>
+</html>

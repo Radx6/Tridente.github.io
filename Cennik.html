@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="tridente.png" type="image/x-icon">
+    <link rel="stylesheet" href="Cennik.css">
+    <title>Document</title>
+</head>
+<main id="main"> <h1>O to nasz Cennik</h1> 
+<table>
+
+<tr id="Klamy">
+<td>Bronie</td>
+
+<td class="item" data-price="25000" data-type="weapon">
+Pistolet WM 29 25000$
+<br>
+<input type="number" class="qty" value="0" min="0" max="20">
+<span class="itemTotal">0$</span>
+</td>
+
+<td class="item" data-price="50000" data-type="weapon">
+Pistolet Bojowy 50000$
+<br>
+<input type="number" class="qty" value="0" min="0" max="20">
+<span class="itemTotal">0$</span>
+</td>
+
+<td class="item" data-price="35000" data-type="weapon">
+Pistolet Vintage 35000$
+<br>
+<input type="number" class="qty" value="0" min="0" max="20">
+<span class="itemTotal">0$</span>
+</td>
+
+<td class="item" data-price="35000" data-type="weapon">
+Pistolet P250 35000$
+<br>
+<input type="number" class="qty" value="0" min="0" max="20">
+<span class="itemTotal">0$</span>
+</td>
+
+<td class="item" data-price="70000" data-type="weapon">
+Cieżki pistolet 70000$
+<br>
+<input type="number" class="qty" value="0" min="0" max="20">
+<span class="itemTotal">0$</span>
+</td>
+
+</tr>
+
+
+<tr>
+<td>Ammo</td>
+
+<td class="item" data-price="18">
+Amunicja .45 ACP 18$
+<br>
+<input type="number" class="qty" value="0" min="0">
+<span class="itemTotal">0$</span>
+</td>
+
+<td class="item" data-price="45">
+Amunicja 9mm 45$
+<br>
+<input type="number" class="qty" value="0" min="0">
+<span class="itemTotal">0$</span>
+</td>
+
+</tr>
+
+
+<tr>
+<td>Dodadki</td>
+
+<td class="item" data-price="10000">Tłumik 10000<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="15000">Powiększony magazynek 15000<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="12500">Kajdanki 12500<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="4000">Molotov 4000<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="8000">Lekka Kamizelka 8000<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="10000">Kamizelka 10000<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+
+</tr>
+
+<tr>
+<td>Bronie białe</td>
+
+<td class="item" data-price="1500">Nóż 1500<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="4500">Nóż sprężynowy 4500<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="3000">Maczeta 3000<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="4500">Baseball 4500<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+
+</tr>
+
+
+<tr>
+<td>Narkotyki</td>
+
+<td class="item" data-price="500">Nasiona Skun 500<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="1000">Nasiona Purple haze 1000<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="50">Marycha 50$<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="100">Purple 100$<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+<td class="item" data-price="50">Grzyb 50$<br><input type="number" class="qty" value="0"><span class="itemTotal">0$</span></td>
+
+</tr>
+
+</table>
+
+<h2>Suma zamówienia: <span id="grandTotal">0$</span></h2>
+<script src="Cennik.js"></script>
+<button id="checkoutBtn">Zatwierdź koszyk</button>
+
+<h3>Twoje zamówienie:</h3>
+<div id="orderList"></div>
+<script src="Cennikprzycisk.js"></script>
+<h2>Dzień dobry narazie zamówienia przyjmuje na discord death21321</h2>
+<h2>Numer kontaktowy IC: 877741</h2>
+<a href="index.html">Powrót</a>
+<div class="player">
+
+<button onclick="toggleMusic()" id="playBtn">▶</button>
+
+<select id="songList">
+<option value="Kartky - Outside (prod. HVZX).mp3">Outside</option>
+<option value="piosenka2.mp3">Piosenka 2</option>
+<option value="piosenka3.mp3">Piosenka 3</option>
+</select>
+
+🔊 <input type="range" id="volumeSlider" min="0" max="1" step="0.01">
+
+</div>
+
+<audio id="muzyka" loop></audio>
+<script src="Muzyka.js"></script>
+</body>
+</html>

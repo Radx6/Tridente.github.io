@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+}
+header {
+    color: darkslategray;
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+    font-weight: bold;
+}
+header:hover {
+    color: darkgray;
+}
+img {
+  width: auto;
+  height: 300px;
+  object-fit: cover;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+a{
+    color: darkslategray;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: left;
+    font-size: xx-large;
+}
+a:hover{
+    color: darkred;
+}
+  
