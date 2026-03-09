@@ -2,40 +2,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="koszyk.css">
 <title>Koszyk</title>
 </head>
 <body>
 
 <h1>Twój koszyk</h1>
 
-<div id="cartItems"></div>
-
-<h2>Suma: <span id="total">0$</span></h2>
+<div id="listaKoszyka"></div>
 
 <script>
 
-const cart = JSON.parse(localStorage.getItem("cart")) || []
+let koszyk = JSON.parse(localStorage.getItem("koszyk")) || [];
 
-const cartItems = document.getElementById("cartItems")
-const totalText = document.getElementById("total")
+let lista = document.getElementById("listaKoszyka");
 
-let total = 0
+koszyk.forEach(p => {
 
-cart.forEach(item=>{
+let div = document.createElement("div");
 
-let itemTotal = item.qty * item.price
+div.innerHTML =
+p.nazwa + " | ilość: " + p.ilosc + " | cena: " + (p.cena * p.ilosc) + "$";
 
-cartItems.innerHTML += `
-<p>
-${item.name} x${item.qty} = ${itemTotal}$
-</p>
-`
+lista.appendChild(div);
 
-total += itemTotal
-
-})
-
-totalText.innerText = total + "$"
+});
 
 </script>
 <div class="player">
@@ -54,5 +45,6 @@ totalText.innerText = total + "$"
 
 <audio id="muzyka" loop></audio>
 <script src="Muzyka.js"></script>
+<a href="Cennik.html">Powrót</a>
 </body>
 </html>

@@ -1,37 +1,45 @@
-const items = document.querySelectorAll(".item");
-const grandTotal = document.getElementById("grandTotal");
+function dodajDoKoszyka(){
 
-function updateTotal(){
+let koszyk = [];
 
-let total = 0;
+let wm29 = document.getElementById("wm29").value;
+let bojowy = document.getElementById("bojowy").value;
+let Vintage = document.getElementById("Vintage").value;
+let P250 = document.getElementById("P250").value;
+let APC = document.getElementById("APC").value;
+let MM = document.getElementById("MM").value;
 
-items.forEach(item => {
-
-const price = parseInt(item.dataset.price);
-const type = item.dataset.type;
-
-const qtyInput = item.querySelector(".qty");
-const itemTotal = item.querySelector(".itemTotal");
-
-let qty = parseInt(qtyInput.value) || 0;
-
-if(type === "weapon" && qty > 20){
-qty = 20;
-qtyInput.value = 20;
+if(wm29 > 0){
+koszyk.push({nazwa:"Pistolet WM 29", cena:25000, ilosc:wm29});
 }
 
-const itemPrice = qty * price;
-
-itemTotal.innerText = itemPrice + "$";
-
-total += itemPrice;
-
-});
-
-grandTotal.innerText = total + "$";
-
+if(bojowy > 0){
+koszyk.push({nazwa:"Pistolet Bojowy", cena:50000, ilosc:bojowy});
 }
 
-document.querySelectorAll(".qty").forEach(input=>{
-input.addEventListener("input", updateTotal);
-});
+if(Vintage > 0){
+koszyk.push({nazwa:"Vintage", cena:35000, ilosc:Vintage});
+}
+
+if(P250 > 0){
+koszyk.push({nazwa:"P250", cena:35000, ilosc:P250});
+}
+
+if(Heavy > 0){
+koszyk.push({nazwa:"Heavy", cena:70000, ilosc:Heavy});
+}
+
+if(APC > 0){
+koszyk.push({nazwa:"APC", cena:18, ilosc:APC});
+}
+
+if(MM > 0){
+koszyk.push({nazwa:"MM", cena:45, ilosc:MM});
+}
+
+
+localStorage.setItem("koszyk", JSON.stringify(koszyk));
+
+alert("Dodano do koszyka");
+
+}

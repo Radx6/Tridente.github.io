@@ -33,14 +33,11 @@ img {
 .gallery img:hover {
   transform: scale(1.05);
 }
-a{
-    color: darkslategray;
-    font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    text-align: left;
-    font-size: xx-large;
+button{
+margin-top:20px;
+padding:10px 20px;
+font-size:16px;
+cursor:pointer;
+background-color: red;
+color: black;
 }
-a:hover{
-    color: darkred;
-}
-  

@@ -4,8 +4,6 @@
 body {
     background-image: url(2.png);
     color: white;
-    width: auto;
-    heigth: auto;
 }
 
 header {
@@ -24,4 +22,3 @@ a{
 audio {
     justify-self: center;
 }
-
