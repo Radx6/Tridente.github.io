@@ -3,115 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="galeria.css">
-    <link rel="shortcut icon" href="Zdjecia/tridente.png" type="image/x-icon">
+    <link rel="stylesheet" href="Maincss/galeria.css">
+    <link rel="shortcut icon" href="Zdjecia/tridente.png">
     <title>Tridente Di Sangue</title>
 </head>
+
 <body id="wrapper">
-    
-    <section>
 
-        <main>
+<section>
+<main>
 
-            <!-- ZDJĘCIA -->
-            <div class="slider">
-                <div class="track">
+<h1>Tridente Di Sangue</h1>
 
-                    <!-- ORYGINAŁ -->
-                    <div class="slide"><img src="1.png"></div>
-                    <div class="slide"><img src="2.png"></div>
-                    <div class="slide"><img src="3.png"></div>
-                    <div class="slide"><img src="4.png"></div>
-                    <div class="slide"><img src="5.png"></div>
-                    <div class="slide"><img src="6.png"></div>
-                    <div class="slide"><img src="7.png"></div>
-                    <div class="slide"><img src="8.png"></div>
-                    <div class="slide"><img src="9.png"></div>
-                    <div class="slide"><img src="10.png"></div>
-                    <div class="slide"><img src="11.png"></div>
-                    <div class="slide"><img src="12.png"></div>
-                    <div class="slide"><img src="13.png"></div>
-                    <div class="slide"><img src="14.png"></div>
-                    <div class="slide"><img src="15.png"></div>
-                    <div class="slide"><img src="16.png"></div>
-                    <div class="slide"><img src="17.png"></div>
-                    <div class="slide"><img src="19.png"></div>
-                    <div class="slide"><img src="20.png"></div>
-                    <div class="slide"><img src="21.png"></div>
-                    <div class="slide"><img src="22.png"></div>
+<div class="spotify-player">
 
+    <img src="Zdjecia/tridente.png" class="cover">
 
-                    <!-- KOPIA -->
-                     <div class="slide"><img src="1.png"></div>
-                    <div class="slide"><img src="2.png"></div>
-                    <div class="slide"><img src="3.png"></div>
-                    <div class="slide"><img src="4.png"></div>
-                    <div class="slide"><img src="5.png"></div>
-                    <div class="slide"><img src="6.png"></div>
-                    <div class="slide"><img src="7.png"></div>
-                    <div class="slide"><img src="8.png"></div>
-                    <div class="slide"><img src="9.png"></div>
-                    <div class="slide"><img src="10.png"></div>
-                    <div class="slide"><img src="11.png"></div>
-                    <div class="slide"><img src="12.png"></div>
-                    <div class="slide"><img src="13.png"></div>
-                    <div class="slide"><img src="14.png"></div>
-                    <div class="slide"><img src="15.png"></div>
-                    <div class="slide"><img src="16.png"></div>
-                    <div class="slide"><img src="17.png"></div>
-                    <div class="slide"><img src="19.png"></div>
-                    <div class="slide"><img src="20.png"></div>
-                    <div class="slide"><img src="21.png"></div>
-                    <div class="slide"><img src="22.png"></div>
-                </div>
-            </div>
+    <div class="info">
+        <div id="title">Tridente Theme</div>
+        <input type="range" id="progress" value="0">
+    </div>
 
-            <!-- NAPIS POD ZDJĘCIAMI -->
-            <header>
-                <h1>Tridente Di Sangue</h1>
-                <p>W naszym kartelu Tridente Di Sangue</p>
-                <div class="opis">
-                    <p>Jesteśmy Kartelem dość mocno nastawionym na odgrywanie RolePlayu</p>
-                    <p>Również jesteśmy otwarci na nowe osoby, Które wchodza w ten świat RolePlayu</p>
-                    <p></p>
+    <button onclick="togglePlay()" id="playBtn">▶</button>
+    <button onclick="nextSong()">⏭</button>
 
+    <br><br>
 
-                </div>
-                <div class="spotify-player">
-<<<<<<< HEAD
-<img src="tridente.png" class="cover">
-=======
-<img src="cover.jpg" class="cover">
->>>>>>> ca882b3 (git push)
+    🔊 <input type="range" min="0" max="1" step="0.01" onchange="audio.volume = this.value">
 
-<div class="info">
-<div class="title">Tridente Theme</div>
- <div class="artist">Tridente Di Sangue</div>
+    <audio id="audio"></audio>
 
-                            <input type="range" id="progress" value="0">
-                        </div>
-
-                <button onclick="togglePlay()" id="playBtn">▶</button>
-
-<<<<<<< HEAD
-                    <audio id="audio" src="PRO8L3M - VHS.mp3"></audio>
-                    <audio id="audio" src="Ritz Carlton (Remix).mp3"></audio>
-=======
-                    <audio id="audio" src="muzyka.mp3"></audio>
->>>>>>> ca882b3 (git push)
 </div>
-            </header>
 
-<script src="JavaScript.js"></script>
+</main>
+</section>
 
-        </main>
+<script>
 
-        <footer>
-    
-        </footer>
+// ===== MUZYKA =====
+const audio = document.getElementById("audio");
+const playBtn = document.getElementById("playBtn");
+const title = document.getElementById("title");
 
-    </section>
+let songs = [
+    "Muzyka/vhs.mp3",
+    "Muzyka/ritz.mp3",
+    "Muzyka/blok.mp3",
+    "Muzyka/czarownica.mp3"
+];
 
+let names = [
+    "PRO8L3M - VHS",
+    "Ritz Carlton Remix",
+    "DISCODŻEMIK",
+    "Czarownica"
+];
+
+let current = 0;
+
+function loadSong(index) {
+    audio.src = songs[index];
+    title.textContent = names[index];
+}
+
+function togglePlay() {
+    if (audio.paused) {
+        audio.play();
+        playBtn.textContent = "⏸";
+    } else {
+        audio.pause();
+        playBtn.textContent = "▶";
+    }
+}
+
+function nextSong() {
+    current++;
+    if (current >= songs.length) current = 0;
+    loadSong(current);
+    audio.play();
+    playBtn.textContent = "⏸";
+}
+
+// progress bar
+audio.addEventListener("timeupdate", () => {
+    document.getElementById("progress").value =
+        (audio.currentTime / audio.duration) * 100 || 0;
+});
+
+// start
+loadSong(current);
+
+</script>
 
 </body>
 </html>
