@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+    background-color: gray;
+}
+body {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: blue;
+    font-size: large;
+}
+button {
+    text-align: center;
+    background-color: tomato;
+}
